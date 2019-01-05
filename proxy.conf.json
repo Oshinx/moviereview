@@ -1,0 +1,7 @@
+{
+    "/ws/1.1/*":{
+        "target" : "https://http://api.musixmatch.com",
+        "secure" : false,
+        "changeOrigin" :true
+    }
+}

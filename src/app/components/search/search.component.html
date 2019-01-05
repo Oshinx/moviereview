@@ -1,0 +1,43 @@
+<div class="container"> 
+    <spinner *ngIf="showoutterSpinner; else datavailable" ></spinner>
+  <ng-template   #datavailable>
+      <div class="card card-body mb-4 p-4">
+          <h1 class="display-4 text-center">
+              <i class="fas fa-music"></i> Search For a Song
+          </h1>
+          <p class="lead text-center"> Get any song's lyrics </p>
+          <form (submit)="getSearchResult(songTitle.value)">
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" #songTitle name="song-title" 
+                   placeholder="Song title...."><br/>
+
+                   <button type="submit" class="btn btn-dark btn-block"> Submit</button>
+              </div>
+          </form>
+      </div>
+
+   <h3 class="text-center mb-4">{{heading}} </h3>
+    
+   <spinner *ngIf="showinnerSpinner; else searchresultavailable"></spinner>
+   <ng-template #searchresultavailable>
+   <div class="row">
+     <div class="col-md-6" *ngFor="let track of tracks">
+     <div class="card mb-4 shadow-sm">
+      <div class="card-body" >
+      <h5>{{track.track.artist_name}}</h5>
+       <p class="card-text">
+       <strong><i class="fas fa-play"></i> Track</strong>:{{track.track.track_name}}
+       <br/>
+       <strong><i class="fas fa-compact-disc"></i> Album</strong>: {{track.track.album_name}}
+     </p>
+      <a class="btn btn-dark btn-block" routerLink ="/musiclyric/{{track.track.track_id}}">
+     <i class="fas fa-chevron-right"></i>  <span> View Lyrics</span>
+     </a>
+      
+    </div>
+   </div>
+  </div>
+ </div>
+</ng-template>
+</ng-template>
+</div>

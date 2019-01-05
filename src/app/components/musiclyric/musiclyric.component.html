@@ -1,0 +1,31 @@
+<div class="container">
+   <spinner *ngIf="showSpinner; else datavailable" ></spinner>
+   
+   <ng-template  #datavailable>
+     <div class="card">
+    <h5 class="card-header">
+        {{track.track_name}} by <span class="text-secondary">{{track.artist_name}}</span>
+    </h5>
+    <div class="card-body">
+        <div class="card-text">
+            {{lyric?.lyrics_body || "Not Available"}}
+        </div>
+    </div>
+</div>
+<ul class="list-group mt-3">
+ <li class="list-group-item">
+     <strong>Album ID</strong>: {{track?.album_id || "Not Available"}}
+    </li>
+
+          <li class="list-group-item">
+            <strong>Genre</strong>: {{track?.primary_genres.music_genre_list[0]
+            .music_genre.music_genre_name || "Not Available"}}
+           </li>
+
+           <li class="list-group-item">
+                <strong>Release Date</strong>: {{track?.first_release_date | date }} 
+               </li>
+           
+    </ul>
+  </ng-template>
+</div>
